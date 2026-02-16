@@ -1,17 +1,21 @@
-# Equity-Portfolio-Optimisation
+# Equity Portfolio Optimisation (Streamlit)
 
-Voici une application Streamlit regroupant une optimisation de portefeuilles ainsi qu'un backtesting "out-of-sample" de la stratégie optimale
+Application :contentReference[oaicite:1]{index=1} pour :
+- optimiser un portefeuille long-only via Markowitz min-vol sous contrainte de rendement,
+- visualiser la frontière efficiente + nuage Monte Carlo,
+- backtester out-of-sample vs un benchmark et calculer des métriques de performance.
 
-L'objectif de ce projet est de mettre en pratique l'optimisation d'un portefeuille d'actions selon le modèle min-variance de Markowitz.
-On obtient à partir des données d'entraînements :
-  - Un diagramme en bâton des poids optimaux pour chacune des actions
-  - Une simulation MonteCarlo de portefeuilles permettant de mettre en lumière le portfeuille optimal et la frontière efficiente
-    
-Dans un second temps sur les données de test:
-  - Déterminer le Béta de ce portefeuille optimal
-  - Déterminer son "alpha de Jensen" à partir du CAPM
-  - Calculer des indicateurs de performance (ratio de Sharpe, ratio de Sortino et ratio de Calmar)
+> Données de marché récupérées via yfinance (source : :contentReference[oaicite:2]{index=2}).  
+> **Disclaimer** : projet éducatif, pas un conseil en investissement.
 
-Ensuite, à partir des données de test, l'application contient également :
-  - une comparaions de l'évolution du rendement du portefeuille par rapport à un benchmark
-  - une analyse des drawdowns du portefeuille comparé à ceux du benchmark
+## Fonctionnalités
+- Optimisation **min-volatilité** (SLSQP, contraintes : somme des poids = 1, poids ∈ [0,1], rendement cible)
+- Frontière efficiente + simulation Monte Carlo de portefeuilles
+- Backtest buy & hold out-of-sample
+- Indicateurs : Sharpe, Sortino, Calmar, Max Drawdown, bêta CAPM, alpha de Jensen
+
+## Installation des librairies nécessiares
+pip install -r requirements.txt
+
+## Lancer l'application
+Après avoir exécuter le code, écrire dans le terminal la commande suivante : streamlit run projet.py
